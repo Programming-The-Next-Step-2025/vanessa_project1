@@ -1,0 +1,13 @@
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "recipe_book_project_vanessalulo"
+version = "0.0.1"
+authors = [
+  { name="Vanessa Lulo", email="vanessaluloo@gmail.com" },
+]
+description = "A small example package"
+readme = "README.md"
+requires-python = ">=3.9"
