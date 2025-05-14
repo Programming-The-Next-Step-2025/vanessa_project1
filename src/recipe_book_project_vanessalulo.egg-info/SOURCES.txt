@@ -1,0 +1,10 @@
+LICENSE
+README.md
+pyproject.toml
+src/recipe_book_project_vanessalulo/__init__.py
+src/recipe_book_project_vanessalulo/example.py
+src/recipe_book_project_vanessalulo.egg-info/PKG-INFO
+src/recipe_book_project_vanessalulo.egg-info/SOURCES.txt
+src/recipe_book_project_vanessalulo.egg-info/dependency_links.txt
+src/recipe_book_project_vanessalulo.egg-info/top_level.txt
+tests/test.py
