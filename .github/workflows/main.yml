@@ -22,10 +22,10 @@ jobs:
 
     - name: Install dependencies
       run: |
-        pip install hatch
-        hatch env create
+        python -m pip install --upgrade pip
+        pip install -e ./src
+        pip install pytest
 
     - name: Run tests
       run: |
-        hatch run pytest
-
+        pytest tests/
