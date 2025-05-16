@@ -8,6 +8,9 @@ version = "0.0.1"
 authors = [
   { name="Vanessa Lulo", email="vanessaluloo@gmail.com" },
 ]
-description = "A small example package"
+description = "A small recipe book that tracks pantry items and suggests healthy meals under 400 calories."
 readme = "README.md"
 requires-python = ">=3.9"
+dependencies = [
+  "requests"
+]
