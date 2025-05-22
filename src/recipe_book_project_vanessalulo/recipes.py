@@ -1,35 +1,29 @@
-"""
-Functions for pantry items inventory and low cal meal suggestion.
-"""
+from collections import defaultdict
+from .ingredients import IngredientList
 
-def add_to_pantry(pantry: dict, item: str, quantity: int) -> dict:
-    """
-    Adds item to pantry, or increase item's quantity if it already is in pantry.
+class Pantry:
+    def __init__(self):
+        self.pantry = defaultdict(int)
+        self.recipes = defaultdict(IngredientList)  # maps name -> IngredientList
 
-    Ex:
-        >>> pantry = {}
-        >>> add_to_pantry(pantry, "chicken", 2)
-        {'chicken': 2}
-    """
-    pantry[item] = pantry.retrieve(item, 0) + quantity
-    return pantry
+    def add_to_pantry(self, item: str, quantity: int) -> dict:
+        self.pantry[item] += quantity
+        return dict(self.pantry)
 
+    def add_to_recipes(self, name: str, ingredients: IngredientList):
+        self.recipes[name] = ingredients
 
-def suggest_meals(pantry: dict, meals: list[dict]) -> list[str]:
-    """
-    Suggest meals under 400 cal that use only ingredients in the pantry.
+    def possible_recipe(self, recipe_name: str) -> bool:
+        if recipe_name not in self.recipes:
+            return False
+        return self.recipes[recipe_name].enough_for_recipe(self)
 
-    Ex:
-        >>> pantry = {"rice": 1, "chicken": 1}
-        >>> meals = [
-        ...     {"name": "Rice Chicken Dinner", "ingredients": ["rice", "chicken"], "calories": 360}
-        ... ]
-        >>> suggest_meals(pantry, meals)
-        ['Rice Chicken Dinner']
-    """
-    return [
-        meal["name"]
-        for meal in meals
-        if meal["calories"] <= 400
-        and all(ingredient in pantry for ingredient in meal["ingredients"])
-    ]
+    def lowest_calories_recipe(self):
+        possible = [
+            (name, recipe.total_calories)
+            for name, recipe in self.recipes.items()
+            if recipe.enough_for_recipe(self)
+        ]
+        if not possible:
+            return None
+        return min(possible, key=lambda x: x[1])[0]
