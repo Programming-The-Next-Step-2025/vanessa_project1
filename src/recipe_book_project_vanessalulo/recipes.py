@@ -12,7 +12,7 @@ class Pantry:
 
     def __init__(self):
         """
-        Initializes a Pantry object with empty pantry and recipe collections.
+        Initializes a Pantry  with empty pantry and recipe collections.
         """
         self.pantry = defaultdict(int)
         self.recipes = defaultdict(IngredientList)  # maps name -> IngredientList
