@@ -1,5 +1,15 @@
 Metadata-Version: 2.4
 Name: recipe_book_project_vanessalulo
-Version: 0.0.0
+Version: 0.0.1
+Summary: A small recipe book that tracks pantry items and suggests healthy meals under 400 calories.
+Author-email: Vanessa Lulo <vanessaluloo@gmail.com>
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: plotly
+Requires-Dist: nbformat>=4.2.0
 Dynamic: license-file
+
+# DOCS
+This is going to be a recipe book that lets you keep track of food you have in your pantry and suggests healthy meals using those ingredients

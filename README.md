@@ -1,2 +1,8 @@
-# DOCS
-This is going to be a recipe book that lets you keep track of food you have in your pantry and suggests healthy meals using those ingredients
+# RecipeFinder
+
+- This package lets you create a `Pantry` object to manage recipes and ingredients.
+- You can save `Ingredient` objects with their quantities and caloric information, and store them for easy access.
+
+## smart search for ingredients
+
+- You can search for the lowest calorie recipes by setting calorie thresholds

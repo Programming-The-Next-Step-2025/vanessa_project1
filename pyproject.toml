@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling >= 1.26"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "recipe_book_project_vanessalulo"
@@ -13,5 +13,6 @@ readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
   "requests",
-  "plotly"
+  "plotly",
+  "nbformat>=4.2.0"
 ]

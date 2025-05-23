@@ -1,5 +1,7 @@
 from collections import defaultdict
 from .ingredients import IngredientList
+import plotly.graph_objects as go
+
 
 class Pantry:
     """
@@ -55,6 +57,22 @@ class Pantry:
             return False
         return self.recipes[recipe_name].enough_for_recipe(self)
 
+    def find_recipes_under(self, calories=400):
+        """
+        Finds all recipes that can be made with the current pantry contents and are under a specified calorie limit.
+
+        Args:
+            calories (int): The maximum calorie limit for the recipes.
+
+        Returns:
+            list: A list of recipe names that can be made and are under the calorie limit.
+        """
+        possible = [
+            name
+            for name, recipe in self.recipes.items()
+            if recipe.enough_for_recipe(self) and recipe.total_calories < calories
+        ]
+        return possible
     def lowest_calories_recipe(self):
         """
         Finds the recipe with the lowest calories that can be made from the pantry.
@@ -70,3 +88,27 @@ class Pantry:
         if not possible:
             return None
         return min(possible, key=lambda x: x[1])[0]
+    
+    def visualize_pantry(self):
+            """
+            Creates an interactive bar chart of the pantry contents using Plotly.
+            """
+            if not self.pantry:
+                print("Pantry is empty.")
+                return
+
+            items = list(self.pantry.keys())
+            quantities = list(self.pantry.values())
+
+            fig = go.Figure(data=[
+                go.Bar(name='Quantity', x=items, y=quantities)
+            ])
+
+            fig.update_layout(
+                title="Pantry Ingredient Quantities",
+                xaxis_title="Ingredient",
+                yaxis_title="Quantity",
+                template="plotly_white"
+            )
+
+            fig.show()
