@@ -1,6 +1,7 @@
 """
 Functions for pantry items inventory and low cal meal suggestion.
 """
+import json
 
 def add_to_pantry(pantry: dict, item: str, quantity: int) -> dict:
     """
@@ -11,7 +12,7 @@ def add_to_pantry(pantry: dict, item: str, quantity: int) -> dict:
         >>> add_to_pantry(pantry, "chicken", 2)
         {'chicken': 2}
     """
-    pantry[item] = pantry.retrieve(item, 0) + quantity
+    pantry[item] = pantry.get(item, 0) + quantity
     return pantry
 
 
@@ -33,3 +34,19 @@ def suggest_meals(pantry: dict, meals: list[dict]) -> list[str]:
         if meal["calories"] <= 400
         and all(ingredient in pantry for ingredient in meal["ingredients"])
     ]
+
+def save_pantry_and_meals(pantry: dict, meals: list[dict], filename: str) -> None:
+    """
+    Saves the pantry and meals data to a JSON file.
+
+    Args:
+        pantry: Dictionary of pantry items and their quantities.
+        meals: List of meal dictionaries.
+        filename: Path to the JSON file to save data.
+    """
+    data = {
+        "pantry": pantry,
+            "meals": meals
+        }
+    with open(filename, "w") as f:
+        json.dump(data, f, indent=2)
