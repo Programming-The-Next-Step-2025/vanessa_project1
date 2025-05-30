@@ -1,5 +1,21 @@
 Metadata-Version: 2.4
 Name: recipe_book_project_vanessalulo
-Version: 0.0.0
+Version: 0.0.1
+Summary: A small recipe book that tracks pantry items and suggests healthy meals under 400 calories.
+Author-email: Vanessa Lulo <vanessaluloo@gmail.com>
+Requires-Python: >=3.9
+Description-Content-Type: text/markdown
 License-File: LICENSE
+Requires-Dist: requests
+Requires-Dist: plotly
+Requires-Dist: nbformat>=4.2.0
 Dynamic: license-file
+
+# RecipeFinder
+
+- This package lets you create a `Pantry` object to manage recipes and ingredients.
+- You can save `Ingredient` objects with their quantities and caloric information, and store them for easy access.
+
+## smart search for ingredients
+
+- You can search for the lowest calorie recipes by setting calorie thresholds

@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling >= 1.26"]
-build-backend = "hatchling.build"
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "recipe_book_project_vanessalulo"
@@ -12,5 +12,7 @@ description = "A small recipe book that tracks pantry items and suggests healthy
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-  "requests"
+  "requests",
+  "plotly",
+  "nbformat>=4.2.0"
 ]
